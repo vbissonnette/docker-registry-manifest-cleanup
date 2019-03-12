@@ -131,7 +131,10 @@ for filename in linked_manifest_files:
 		shasum = open(filename, 'r').read().split(":")[1]
 		manifest = json.loads(open("%s/sha256/%s/%s/data" % (blob_dir, shasum[0:2], shasum)).read())
 
-	manifest_media_type = manifest["mediaType"]
+	try:                                                                                                                                                                                           
+                manifest_media_type = manifest["mediaType"]                                                                                                                                            
+        except KeyError as e:                                                                                                                                                                          
+                manifest_media_type = ""
 	
 	if manifest_media_type == "application/vnd.docker.distribution.manifest.list.v2+json":
 		#add all manifests from manifest list
