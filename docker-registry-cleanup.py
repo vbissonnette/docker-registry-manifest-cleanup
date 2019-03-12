@@ -135,7 +135,7 @@ for filename in linked_manifest_files:
 		manifest_media_type = manifest["mediaType"]
 	except KeyError as e:
 		manifest_media_type = ""
-	
+		
 	if manifest_media_type == "application/vnd.docker.distribution.manifest.list.v2+json":
 		#add all manifests from manifest list
 		for mf in manifest["manifests"]:
